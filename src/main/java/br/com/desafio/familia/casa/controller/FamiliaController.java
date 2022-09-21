@@ -12,24 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafio.familia.casa.dto.FamiliaDTO;
 import br.com.desafio.familia.casa.repository.FamiliaRepository;
+import br.com.desafio.familia.casa.service.FamiliaService;
 
 @RestController
 @RequestMapping("/familia")
 public class FamiliaController {
 	
 	@Autowired
-	private FamiliaRepository familiaRepository;
+	private FamiliaService familiaService;
 	
 	@GetMapping("/rank")
 	public ResponseEntity<Object> consultar() {
 		try {
 			
-			List<FamiliaDTO> familiasDTO = 
-					familiaRepository.findAll().stream()
-					.filter(familia -> familia.getPessoas().size() > 0)
-					.map(familia -> new FamiliaDTO(familia))
-					.sorted(Comparator.comparingInt(FamiliaDTO::getPontos).reversed())
-					.collect(Collectors.toList());
+			List<FamiliaDTO> familiasDTO = familiaService.getListaOrdenada();
 			
 			if(familiasDTO.size() > 0) {
 				return ResponseEntity.ok(familiasDTO);
