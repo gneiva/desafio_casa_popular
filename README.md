@@ -1,4 +1,4 @@
-# Desafio: Seleção de famílias aptas a ganharem uma casa popular
+# Seleção de famílias aptas a ganharem uma casa popular
 Projeto para o desafio de seleção de famílias aptas a ganharem uma casa popular da Digix
 
 ## Objetivo
@@ -14,6 +14,11 @@ O código que faz essa análise hoje é totalmente procedural, repleto de blocos
 
 Falando sobre estender, o cliente já deixou um alerta ligado de que irão incluir novos critérios na avaliação das famílias em breve, assim que forem aprovados pelo governador, então temos que ter uma solução preparada para adicioná-los sem muito custo de implementação.
 
+## pré-requisito
+Java versão 8 ou posterior <br>
+Maven 3.3+<br>
+GIT<br>
+
 ## Instalação
 1º Utilizando o GIT realize o clone do projeto<br>
 <code> git clone https://github.com/gneiva/desafio_casa_popular.git </code>
@@ -26,3 +31,6 @@ Falando sobre estender, o cliente já deixou um alerta ligado de que irão inclu
 
 4º Rode a aplicação<br>
 <code> java -jar target/casa-0.0.1-SNAPSHOT.jar  </code>
+
+5º Testando a aplicação<br>
+acesse http://localhost:8080/familia/rank utilizando o protocolo GET para obter o objeto json com as familias ordenada por pontuação
