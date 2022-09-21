@@ -6,13 +6,7 @@ INSERT INTO familia  (nome) VALUES
 ('Família E'),
 ('Família F'),
 ('Família G'),
-('Família H'),
-('Família I'),
-('Família J'),
-('Família K'),
-('Família L'),
-('Família M'),
-('Família N');
+('Família H');
 
 
 INSERT INTO pessoa (nome, data_nascimento, renda, id_familia) VALUES 
@@ -33,5 +27,10 @@ INSERT INTO pessoa (nome, data_nascimento, renda, id_familia) VALUES
  ('Afonso', '1975-12-25', '900.00', 	(SELECT id_familia FROM familia where nome = 'Família E')),
  ('Cleide', '1960-11-08', '0.0', 		(SELECT id_familia FROM familia where nome = 'Família E')),
  ('Alberto', '1975-12-25', '900.00',	(SELECT id_familia FROM familia where nome = 'Família E')),
-('Dani', '1960-11-08', '450.0', 		(SELECT id_familia FROM familia where nome = 'Família E'));
+('Dani', '1960-11-08', '450.0', 		(SELECT id_familia FROM familia where nome = 'Família E')),
+ ('Joaquim', '1985-12-25', '400.00', 	(SELECT id_familia FROM familia where nome = 'Família F')),
+ ('Joana', '1986-11-08', '100.0', 		(SELECT id_familia FROM familia where nome = 'Família F')),
+ ('Joaninha', '2022-02-22', '0.0',		(SELECT id_familia FROM familia where nome = 'Família F')),
+ ('Joaninho', '2020-02-22', '0.0', 		(SELECT id_familia FROM familia where nome = 'Família F')),
+ ('José', '2018-02-22', '0.0', 		(SELECT id_familia FROM familia where nome = 'Família F'));
   

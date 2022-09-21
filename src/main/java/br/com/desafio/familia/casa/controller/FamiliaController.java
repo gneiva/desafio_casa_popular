@@ -1,18 +1,16 @@
 package br.com.desafio.familia.casa.controller;
 
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.desafio.familia.casa.dto.FamiliaDTO;
-import br.com.desafio.familia.casa.model.Familia;
 import br.com.desafio.familia.casa.repository.FamiliaRepository;
 
 @RestController
@@ -25,9 +23,18 @@ public class FamiliaController {
 	@GetMapping("/rank")
 	public ResponseEntity<Object> consultar() {
 		try {
-			List<Familia> familias = familiaRepository.findAll();
-			List<FamiliaDTO> familiasDTO = familias.stream().map(familia -> new FamiliaDTO(familia)).collect(Collectors.toList());
-			return ResponseEntity.ok(familiasDTO);
+			
+			List<FamiliaDTO> familiasDTO = 
+					familiaRepository.findAll().stream()
+					.filter(familia -> familia.getPessoas().size() > 0)
+					.map(familia -> new FamiliaDTO(familia))
+					.sorted(Comparator.comparingInt(FamiliaDTO::getPontos).reversed())
+					.collect(Collectors.toList());
+			
+			if(familiasDTO.size() > 0) {
+				return ResponseEntity.ok(familiasDTO);
+			}
+			return ResponseEntity.noContent().build();
 			
 		} catch (Exception e) {
 			return ResponseEntity.notFound().build();
