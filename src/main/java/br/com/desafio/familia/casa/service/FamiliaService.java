@@ -35,7 +35,7 @@ public class FamiliaService {
 				.collect(Collectors.toList());
 	}
 
-	private FamiliaDTO calcularPontos(Familia familia) {
+	public FamiliaDTO calcularPontos(Familia familia) {
 		FamiliaDTO familiaDTO = new FamiliaDTO(familia);
 
 		montarListaDependentes(familiaDTO);
@@ -59,7 +59,10 @@ public class FamiliaService {
 		
 		BigDecimal renda = BigDecimal.ZERO;
 		for (PessoaDTO pessoaDTO : familiaDTO.getPessoas()) {
-			renda = renda.add(pessoaDTO.getRenda());
+			if(pessoaDTO.getRenda() != null
+					&& pessoaDTO.getRenda().compareTo(BigDecimal.ZERO) == 1) {
+				renda = renda.add(pessoaDTO.getRenda());
+			}
 		}
 		familiaDTO.setRenda(renda);		
 	}
