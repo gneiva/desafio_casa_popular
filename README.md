@@ -33,4 +33,4 @@ GIT<br>
 <code> java -jar target/casa-0.0.1-SNAPSHOT.jar  </code>
 
 5º Testando a aplicação<br>
-acesse http://localhost:8080/familia/rank utilizando o protocolo GET para obter o objeto json com as famílias ordenada por pontuação
+acesse http://localhost:8080/familia/rank utilizando o método GET para obter o objeto json com as famílias ordenada por pontuação
